@@ -21,7 +21,6 @@ var booklist = React.createClass({
   componentDidMount: function() {
     var _this = this;
     window.addEventListener('scroll', this.handleScroll);
-    console.log(_this.state.num)
     var url = '/rexxar/api/v2/subject_collection/'+this.state.books.urlname+'/items?os=ios&for_mobile=1&callback=jsonp1&start=0&count='+_this.state.num+'&loc_id=0&_=1523522149306';
     _this.go(url);
   },
@@ -52,7 +51,6 @@ var booklist = React.createClass({
        var result=data.data;
        result=result.substring(8,result.length-2);
        var obj = eval('(' + result + ')');
-       console.log(obj)
        var len = obj.subject_collection_items.length;
        var list = [];
        for(var i=0; i<len;i++){

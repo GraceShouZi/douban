@@ -8,7 +8,6 @@ module.exports = {
         filename: "bundle.js",
         publicPath: '/dist/'
     },
-    devtool: 'eval-source-map',
     devServer: {
         port:8000,
         proxy:{

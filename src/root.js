@@ -17,9 +17,9 @@ var App = React.createClass({
         <div style={{"height":0.34+'rem'}}></div>
         {this.props.children}
         <div className={["footer",location.hash.slice(1)=='/' ? "hide":""].join(' ')}>
-          <span><img src="https://img3.doubanio.com/f/talion/7837f29dd7deab9416274ae374a59bc17b5f33c6/pics/card/douban-app-logo.png"/></span>
           <span>豆瓣</span>
         </div>
+        <div className={["footerPlaceholder",location.hash.slice(1)=='/' ? "hide":""].join(' ')}></div>
       </div>
     );
   }
@@ -31,10 +31,9 @@ var Home = React.createClass({
        <div>
         <Main />
        </div>
-      );
+    );
   }
 })
-
 var root = React.createClass({
   render(){
       return(

@@ -44,6 +44,7 @@ var Main = React.createClass({
   go:function(url){
     axios.get(url).then((res)=>{
       data.push(res.data);
+      console.log(data[0].recommend_feeds[0].target.url)
       this.setState({
         main_data:data
       })
@@ -71,17 +72,19 @@ var Main = React.createClass({
               <h5 className={item.date!=today?'':'hide'}>{item.date}</h5>
               <ul>
                 {item.recommend_feeds.map(function(items,j){ return <li key={j}>
-                  <div className="mainList_L">
-                    <h4>{items.title}</h4>
-                    <p>{items.target.desc}</p>
-                  </div>
-                  <div className="mainList_R">
-                    <img src={items.target.cover_url} />
-                  </div>
-                  <div className="mainList_tips">
-                    <span>by {items.target.author.name}</span>
-                    <i>{items.source_cn}</i>
-                 </div>
+                  <a href={items.target.url}>
+                    <div className="mainList_L">
+                      <h4>{items.title}</h4>
+                      <p>{items.target.desc}</p>
+                    </div>
+                    <div className="mainList_R">
+                      <img src={items.target.cover_url} />
+                    </div>
+                    <div className="mainList_tips">
+                      <span>by {items.target.author.name}</span>
+                      <i>{items.source_cn}</i>
+                   </div>
+                 </a>
                 </li>})}
               </ul></div>
           })}

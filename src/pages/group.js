@@ -2,7 +2,7 @@ import React from 'react';
 import { HashRouter, Route, Link, Switch } from 'react-router-dom';
 import axios from 'axios';
 
-var groupList = React.createClass({ 
+var group = React.createClass({ 
   getInitialState: function() {
     return {
       list:[]
@@ -25,7 +25,7 @@ var groupList = React.createClass({
       }
       this.setState({
         list:list
-      })
+      });
     }).catch((err)=>{
       console.log(err);
     });
@@ -33,18 +33,21 @@ var groupList = React.createClass({
   render: function() {
     var _this=this;
     return (
-    	<div className="group">{this.state.list.map(function(item,i){return <div key={i} className="grouplist">
+    	<div className="group">{this.state.list.map(function(item,i){return <div key={i} className="group_content">
           <h3>{item.name}</h3>
           <ul>{item.arr.map(function(items,j){return <li key={j}>
-             <div className="grouplist_title"> 
-                <span className="grouplist_left"><img src={items.avatar} /></span>
-                <em>{items.name}</em><i>{items.member_count} 人</i>
+            <a href={items.url}>
+             <div className="group_content_title" id={items.id}> 
+                <span className="group_content_left"><img src={items.avatar} /></span>
+                <em>{items.name}</em>
+                <i>{items.member_count} 人</i>
              </div>
              <p>{items.desc_abstract}</p>
+            </a>
           </li>})}</ul>
       </div>})}
     	</div>
     );
   }
 });
-export default groupList;
+export default group;
